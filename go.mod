@@ -1,3 +1,3 @@
-module github.com/kozl/netology-devops
+module github.com/AstaKrom/netology-devops
 
 go 1.17
