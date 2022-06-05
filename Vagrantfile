@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.memory = "4072"
+    vb.memory = "4096"
   end
   #
   # View the documentation for the provider you are using for more
@@ -83,7 +83,16 @@ Vagrant.configure("2") do |config|
     systemctl restart jenkins
     # pull nexus image in advance
     docker pull sonatype/nexus3
+    # install golang 1.18
+    curl -O https://storage.googleapis.com/golang/go1.18.3.linux-amd64.tar.gz
+    tar -xvf go1.18.3.linux-amd64.tar.gz
+    mv go /usr/local
+    touch /home/vagrant/.bash_profile
+    echo "export PATH=$PATH:/usr/local/go/bin" >> /home/vagrant/.bash_profile
+    echo `export GOPATH=/home/vagrant/workspace:$PATH` >> /home/vagrant/.bash_profile
+    export GOPATH=/home/vagrant/workspace
+    mkdir -p "$GOPATH/bin" 
 
     echo -e "192.168.56.10\tubuntu-bionic\tubuntu-bionic" >> /etc/hosts
-  SHELL
+   SHELL
 end
