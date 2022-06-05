@@ -87,6 +87,7 @@ Vagrant.configure("2") do |config|
     curl -O https://storage.googleapis.com/golang/go1.18.3.linux-amd64.tar.gz
     tar -xvf go1.18.3.linux-amd64.tar.gz
     mv go /usr/local
+    rm go1.18.3.linux-amd64.tar.gz
     touch /home/vagrant/.bash_profile
     echo "export PATH=$PATH:/usr/local/go/bin" >> /home/vagrant/.bash_profile
     echo `export GOPATH=/home/vagrant/workspace:$PATH` >> /home/vagrant/.bash_profile
